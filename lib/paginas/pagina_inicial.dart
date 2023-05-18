@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/doctor_item.dart';
-import '../widgets/specialist_item.dart';
+import '../widgets/especialista_item.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class InicioPagina extends StatefulWidget {
+  const InicioPagina({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<InicioPagina> createState() => _InicioPaginaState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _InicioPaginaState extends State<InicioPagina> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text("La Huellita", style: TextStyle(color: Colors.black)),
+        centerTitle: true,
+        leading: BackButton(
+          color: Colors.purple,
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         iconSize: 24,
@@ -49,8 +57,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: Padding(
+      body: ListView(children: [
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
@@ -62,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Text(
-                        "Hello,",
+                        "Hola,",
                         style: TextStyle(
                           color: Colors.black54,
                           fontSize: 16,
@@ -72,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                         height: 4,
                       ),
                       Text(
-                        "Pesulap Merah",
+                        "¿Que necesitas?",
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -86,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: Colors.grey,
                     child: CircleAvatar(
                       radius: 28,
-                      backgroundImage: AssetImage("assets/pm.png"),
+                      backgroundImage: AssetImage("assets/perfil.jpg"),
                     ),
                   )
                 ],
@@ -104,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Image.asset(
                       "assets/surgeon.png",
@@ -115,10 +123,10 @@ class _HomePageState extends State<HomePage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          "How do you feel?",
+                          "¿Como esta tu mascota?",
                           style: TextStyle(
                               color: Colors.black87,
-                              fontSize: 20,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
@@ -127,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           width: 120,
                           child: Text(
-                            "Fill out your medical right now",
+                            "Encontremos al especialista que necesitas ahora",
                             style: TextStyle(
                               color: Colors.black87,
                               fontSize: 12,
@@ -142,11 +150,11 @@ class _HomePageState extends State<HomePage> {
                           height: 35,
                           padding: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
-                              color: Colors.blueAccent,
+                              color: Colors.purple,
                               borderRadius: BorderRadius.circular(12.0)),
                           child: const Center(
                             child: Text(
-                              "Get Started",
+                              "Empezar",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400,
@@ -179,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                       width: 12,
                     ),
                     Text(
-                      "How can we help you?",
+                      "¿Como te podemos ayudar?",
                       style: TextStyle(
                         color: Colors.black54,
                       ),
@@ -192,33 +200,35 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(
                 height: 60,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  //scrollDirection: Axis.horizontal,
                   children: const [
-                    SpecialistItem(
-                      imagePath: "assets/clean.png",
-                      imageName: "Dentist",
+                    EspecialistaItem(
+                      imagenPatron: "assets/oncologia.png",
+                      imagenNombre: " ",
                     ),
                     SizedBox(
-                      width: 8,
+                      width: 5,
                     ),
-                    SpecialistItem(
-                      imagePath: "assets/knife.png",
-                      imageName: "Surgeon",
-                    ),
-                    SizedBox(
-                      width: 8,
-                    ),
-                    SpecialistItem(
-                      imagePath: "assets/lungs.png",
-                      imageName: "Therapy",
+                    EspecialistaItem(
+                      imagenPatron: "assets/knife.png",
+                      imagenNombre: " ",
                     ),
                     SizedBox(
-                      width: 8,
+                      width: 5,
                     ),
-                    SpecialistItem(
-                      imagePath: "assets/hormones.png",
-                      imageName: "Physiologist",
+                    EspecialistaItem(
+                      imagenPatron: "assets/lungs.png",
+                      imagenNombre: " ",
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    EspecialistaItem(
+                      imagenPatron: "assets/hormones.png",
+                      imagenNombre: " ",
                     ),
                   ],
                 ),
@@ -230,7 +240,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
-                    "Doctor list",
+                    "Lista de doctores",
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -238,7 +248,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Text(
-                    "See all",
+                    "Ver más",
                     style: TextStyle(
                       color: Colors.black45,
                       fontSize: 16,
@@ -250,29 +260,38 @@ class _HomePageState extends State<HomePage> {
                 height: 20,
               ),
               SizedBox(
-                height: 200,
+                height: 230,
                 child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: const [
+                  scrollDirection: Axis.vertical,
+                  children: [
                     DoctorItem(
-                      image: "assets/1.png",
-                      name: "Nycta Gina",
-                      specialist: "Pediatrician",
+                      imagen: "assets/1.png",
+                      nombre: "Joseline Moreno",
+                      especialista: "Cirujana",
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     DoctorItem(
-                      image: "assets/3.png",
-                      name: "Reisa Broto Asmoro",
-                      specialist: "Surgeon",
+                      imagen: "assets/3.png",
+                      nombre: "Nicky Sauria",
+                      especialista: "Terapeuta",
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     DoctorItem(
-                      image: "assets/2.png",
-                      name: "Indah Kusumaningrum",
-                      specialist: "Odontologist",
+                      imagen: "assets/2.png",
+                      nombre: "Misha Palma",
+                      especialista: "Odontologa",
+                    ),
+                    const SizedBox(
+                      height: 20,
                     ),
                     DoctorItem(
-                      image: "assets/4.png",
-                      name: "Mesty Ariotedjo",
-                      specialist: "Ophtamologist",
+                      imagen: "assets/4.png",
+                      nombre: "Violeta Salgado",
+                      especialista: "Oftamologa",
                     ),
                   ],
                 ),
@@ -280,7 +299,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
+      ]),
     );
   }
 }

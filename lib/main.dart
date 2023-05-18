@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_medical_ui/pages/started.dart';
+import 'package:flutter_medical_ui/paginas/comenzar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const VeterinariaApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class VeterinariaApp extends StatelessWidget {
+  const VeterinariaApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Veterinaria',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const StartedPage(),
+      home: const PaginaInicial(),
     );
   }
 }

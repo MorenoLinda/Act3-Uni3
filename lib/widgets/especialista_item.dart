@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SpecialistItem extends StatelessWidget {
-  final String imagePath;
-  final String imageName;
-  const SpecialistItem({
+class EspecialistaItem extends StatelessWidget {
+  final String imagenPatron;
+  final String imagenNombre;
+  const EspecialistaItem({
     Key? key,
-    required this.imagePath,
-    required this.imageName,
+    required this.imagenPatron,
+    required this.imagenNombre,
   }) : super(key: key);
 
   @override
@@ -20,14 +20,14 @@ class SpecialistItem extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(
-            imagePath,
+            imagenPatron,
             width: 32,
           ),
           const SizedBox(
             width: 8,
           ),
           Text(
-            imageName,
+            imagenNombre,
             style: const TextStyle(fontSize: 14),
           )
         ],
